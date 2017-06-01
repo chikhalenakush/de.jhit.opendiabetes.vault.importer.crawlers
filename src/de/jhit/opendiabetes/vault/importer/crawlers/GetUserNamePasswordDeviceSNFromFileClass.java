@@ -62,8 +62,8 @@ public class GetUserNamePasswordDeviceSNFromFileClass {
 				String TempSNString = SN.replaceAll("\t", "");
 				 TempSNString = TempSNString.replaceAll("\\s", "");
 
-				TempSNString = TempSNString.indexOf(" ") > 0
-						? TempSNString.substring(0, TempSNString.indexOf(" ")) : TempSNString;
+				TempSNString = TempSNString.indexOf("#") > 0
+						? TempSNString.substring(0, TempSNString.indexOf("#")) : TempSNString;
 						SN = TempSNString.replaceAll("\\s+$", "");
 				
 				
