@@ -2,7 +2,7 @@ package de.jhit.opendiabetes.vault.importer.crawlers;
 
 import java.util.logging.Logger;
 
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 
 public class LanguageClass {
 

@@ -18,7 +18,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 
 public class SimulateMouseClass {
 
