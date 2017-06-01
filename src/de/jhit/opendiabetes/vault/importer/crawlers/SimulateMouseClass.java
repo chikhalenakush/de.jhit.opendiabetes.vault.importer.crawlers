@@ -183,13 +183,14 @@ public class SimulateMouseClass {
 					driver.get("https://carelink.minimed.eu/patient/entry.jsp?bhcp=1");
 				} else {
 					JOptionPane.showMessageDialog(null, "IEDriver is not selected");
+					return;
 				}
 
 			} catch (Exception e) {
 				logger.info("Inside catch of Class Simulate mouse and Method Startmagic");
 				JOptionPane.showMessageDialog(null,
 						"Please Check if the correct IEDriver is selected OR IE settings are not correctly");
-
+					return;
 			}
 			Boolean isPresent = driver.findElements(By.id("j_username")).size() > 0;
 
@@ -218,7 +219,7 @@ public class SimulateMouseClass {
 					} else {
 						logger.info("Website has not fully loaded close and try running again");
 						JOptionPane.showMessageDialog(null, "Website has not fully loaded close and try running again");
-
+						return;
 					}
 				}
 			}
@@ -241,7 +242,7 @@ public class SimulateMouseClass {
 						logger.info("upload section has not fully loaded close IE and try running Java program again");
 						JOptionPane.showMessageDialog(null,
 								"upload section has not fully loaded close IE and try running Java program again");
-
+						return;
 					}
 				}
 			}
@@ -279,7 +280,7 @@ public class SimulateMouseClass {
 								"Applet section has not fully loaded close IE and try running again Java program again");
 						JOptionPane.showMessageDialog(null,
 								"Applet section has not fully loaded close IE and try running again Java program again");
-
+						return;
 					}
 				}
 
@@ -289,7 +290,7 @@ public class SimulateMouseClass {
 			logger.info("Please Check if the correct IEDriver is selected OR IE settings are not correctly");
 			JOptionPane.showMessageDialog(null,
 					"Please Check if the correct IEDriver is selected OR IE settings are not correctly");
-
+			return;
 		} finally {
 			// JOptionPane.showMessageDialog(null, "Please Check if the correct
 			// IEDriver File Location is selected OR IE settings are correctly

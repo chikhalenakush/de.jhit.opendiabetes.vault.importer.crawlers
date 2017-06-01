@@ -1,5 +1,5 @@
-UserName: chikhalehero
-Password: KnFdDSUjEOUdQ9r+zH8axw==:UJarbRPm5d0O1MhztlFhUw==
-Device: bgdevice	 	#stick,bgdevice
-SN: 1234567890	 	#SN Number should be of 10 characters (alpha numeric only)
-Path to Save CSV:S:/
+UserName:                   chikhalehero    
+Password:              KnFdDSUjEOUdQ9r+zH8axw==:UJarbRPm5d0O1MhztlFhUw==
+Device: 				bgdevice	 	stick,bgdevice
+SN:                 1234567890	        		 	#SN Number should be of 10 characters (alpha numeric only)
+Path to Save CSV:		S:/        			

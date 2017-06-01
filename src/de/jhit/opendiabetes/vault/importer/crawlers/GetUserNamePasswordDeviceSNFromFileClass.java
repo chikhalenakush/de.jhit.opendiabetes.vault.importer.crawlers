@@ -16,9 +16,11 @@ public class GetUserNamePasswordDeviceSNFromFileClass {
 		while ((readLine = b.readLine()) != null) {
 			
 			if (readLine.toLowerCase().contains("username:")) {
+				
+				
 				UserName = readLine.substring(readLine.lastIndexOf(":")+1);
-
-				String TempUserNameString = UserName.replaceFirst("\\s", "");
+				String TempUserNameString = UserName.replaceAll("\t", "");
+				 TempUserNameString = TempUserNameString.replaceAll("\\s", "");
 
 				TempUserNameString = TempUserNameString.indexOf(" ") > 0
 						? TempUserNameString.substring(0, TempUserNameString.indexOf(" ")) : TempUserNameString;
@@ -28,8 +30,8 @@ public class GetUserNamePasswordDeviceSNFromFileClass {
 			}
 			if (readLine.toLowerCase().contains("password:")) {
 				Password = readLine.substring(+9);
-
-				String TempPasswordString = Password.replaceFirst("\\s", "");
+				String TempPasswordString = Password.replaceAll("\t", "");
+				 TempPasswordString = TempPasswordString.replaceAll("\\s", "");
 
 				// TempPasswordString = TempPasswordString.indexOf(" ")
 				// > 0
@@ -45,8 +47,8 @@ public class GetUserNamePasswordDeviceSNFromFileClass {
 
 			if (readLine.toLowerCase().contains("device:") && readLine.contains("#")) {
 				Device = readLine.substring(readLine.lastIndexOf(":")+1);
-
-				String TempDeviceString = Device.replaceFirst("\\s", "");
+				String TempDeviceString = Device.replaceAll("\t", "");
+				 TempDeviceString = TempDeviceString.replaceAll("\\s", "");
 
 				TempDeviceString = TempDeviceString.indexOf("#") > 0
 						? TempDeviceString.substring(0, TempDeviceString.indexOf("#")) : TempDeviceString;
@@ -57,8 +59,8 @@ public class GetUserNamePasswordDeviceSNFromFileClass {
 			}
 			if (readLine.toLowerCase().contains("sn:") && readLine.contains("#")) {
 				SN = readLine.substring(readLine.lastIndexOf(":")+1);
-
-				String TempSNString = SN.replaceFirst("\\s", "");
+				String TempSNString = SN.replaceAll("\t", "");
+				 TempSNString = TempSNString.replaceAll("\\s", "");
 
 				TempSNString = TempSNString.indexOf(" ") > 0
 						? TempSNString.substring(0, TempSNString.indexOf(" ")) : TempSNString;
@@ -69,10 +71,11 @@ public class GetUserNamePasswordDeviceSNFromFileClass {
 			}
 			if (readLine.toLowerCase().contains("path to save csv:")) {
 				PathForCsv = readLine.substring(17);
+				String TempPathForCsvString	= PathForCsv.replaceAll("\t", "");
+				 TempPathForCsvString = TempPathForCsvString.replaceAll("\\s", "");
+					
 				
-				String TempPathForCsvString = PathForCsv.replaceFirst("\\s", "");
-
-				
+				PathForCsv = TempPathForCsvString;
 				
 				logger.info("Inside class GetUserNamePasswordDeviceSNFromFileClass, Get PathForCsv from command line input");
 			}
