@@ -50,7 +50,8 @@ public class CreateConfigFile {
 			//ProcessBuilder pb = new ProcessBuilder("Notepad.exe", currentRelativePath.toAbsolutePath() + "/config.txt");
 			//pb.start();
 			Desktop desktop = Desktop.getDesktop();
-			desktop.edit(file);
+			//desktop.edit(file);
+			desktop.open(file);
 			//desktop.open(currentRelativePath.toAbsolutePath() + "/config.txt");
 			//Desktop.getDesktop().open(File currentRelativePath.getAbsolutePath() + "/config.txt");
 			
