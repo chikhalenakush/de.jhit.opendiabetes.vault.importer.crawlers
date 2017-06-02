@@ -59,11 +59,15 @@ public class CreateConfigFile {
 		} catch (IOException e) {
 			// do something
 			if(file.exists()){
+				System.out.println("There is an issue opening newly created config file, you can edit it at löocation"
+					+ file.getAbsolutePath());
 			JOptionPane.showMessageDialog(null, "There is an issue opening newly created config file, you can edit it at löocation"
 					+ file.getAbsolutePath());
 			}
 			else
 			{
+				System.out.println("There is an issue creatting config file, contact adminnistrator"
+						);
 				JOptionPane.showMessageDialog(null, "There is an issue creatting config file, contact adminnistrator"
 						);
 			}
