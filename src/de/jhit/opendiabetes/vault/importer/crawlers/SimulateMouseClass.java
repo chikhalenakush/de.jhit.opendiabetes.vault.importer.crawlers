@@ -285,7 +285,7 @@ public class SimulateMouseClass {
 				}
 
 			}
-
+				System.out.println("Applet Wrapper completed Sucessfully");
 		} catch (Exception e) {
 			logger.info("Please Check if the correct IEDriver is selected OR IE settings are not correctly");
 			JOptionPane.showMessageDialog(null,

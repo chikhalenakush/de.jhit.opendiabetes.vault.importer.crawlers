@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 public class CreateConfigFile {
 
 	public static String encdecpw[];
@@ -17,7 +19,7 @@ public class CreateConfigFile {
 		// TODO Auto-generated method stub
 
 		// Creating a local file in Project location
-
+		File file = null;
 		try {
 			logger.info("Inside Class for Generating Config file");
 			Path currentRelativePath = Paths.get("");
@@ -25,7 +27,7 @@ public class CreateConfigFile {
 			
 		
 			File newfilef = new File(currentRelativePath.toAbsolutePath() + "/config.txt");
-			File file = new File(currentRelativePath.toAbsolutePath() + "/config.txt");
+			 file = new File(currentRelativePath.toAbsolutePath() + "/config.txt");
 			PrintWriter writer = new PrintWriter(file, "UTF-8");
 			CreateSecurePasswordClass CreateSecurePassword = new CreateSecurePasswordClass();
 			logger.info("Class CreateConfigFile, creating Hash password");
@@ -55,6 +57,15 @@ public class CreateConfigFile {
 
 		} catch (IOException e) {
 			// do something
+			if(file.exists()){
+			JOptionPane.showMessageDialog(null, "There is an issue opening newly created config file, you can edit it at löocation"
+					+ file.getAbsolutePath());
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "There is an issue creatting config file, contact adminnistrator"
+						);
+			}
 		}
 	}
 
