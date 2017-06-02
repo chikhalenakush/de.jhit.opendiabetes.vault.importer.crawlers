@@ -2,4 +2,4 @@ UserName: chiksssss
 Password: 5B8339De+kdvmgG2nYchvg==:tY3+NB4ldih9vvJxWIg8Kg==
 Device: bgdevice	 	#stick,bgdevice
 SN: 1234567890	 	#SN Number should be of 10 characters (alpha numeric only)
-Path to Save CSV:S:/
+Path to Save CSV:e:/

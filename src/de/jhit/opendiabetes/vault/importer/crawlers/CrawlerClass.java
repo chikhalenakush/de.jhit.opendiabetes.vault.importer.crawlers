@@ -3,6 +3,8 @@ package de.jhit.opendiabetes.vault.importer.crawlers;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -46,6 +48,9 @@ public class CrawlerClass {
 		} catch (IOException e) {
 			logger.info("There is an issue Downloading File. Please try again after some time!!");
 			System.out.println("There is an issue Downloading File. Please try checking path or try again after some time!!");
+			Path currentRelativePath = Paths.get("");
+			System.out.println("To change path check config file at " +currentRelativePath.toAbsolutePath());
+			
 
 			//return false;
 		}
