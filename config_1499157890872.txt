@@ -1,9 +1,0 @@
-#Username for access on http://carelink.minimed.eu
-UserName: chikhalehero
-#Password for access on http://carelink.minimed.eu
-Password: LGdooMaaFZK2ZNDEDXug1w==:FC0zUeScMgKhEkmMuE/ilg==
-#Device for pump communication. Available options are: stick, bgdevice
-Device: stick
-#Serial number of the pump you upload data from. 10 characters for Minimed 600 pumps. 6 characters for Paradgim pumps
-SN: 1234567890	 	#SN Number should be of 10 characters (alpha numeric only)
-Path to Save CSV:C:\Users\achikhale\Desktop
