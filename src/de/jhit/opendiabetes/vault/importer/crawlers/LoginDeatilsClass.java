@@ -9,17 +9,17 @@ import org.jsoup.Jsoup;
 
 public class LoginDeatilsClass {
 	private Map<String, String> loginCookies = new HashMap<String, String>();
-	public static String UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
+	public static String USERAGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
 
 	public Map<String, String> getcookies() {
 		return this.loginCookies;
 
 	}
 	
-	public Boolean CheckConnection(String username, String password, Logger logger) {
-		// TODO Auto-generated method stub
+	public Boolean checkConnection(String username, String password, Logger logger) {
+		// check if login credentials are correct or nots
 		try {
-			logger.info("Inside class CheckConnection");
+			logger.info("Inside class checkConnection");
 
 			Connection.Response res = Jsoup.connect("https://carelink.minimed.eu/patient/j_security_check")
 					.data("j_username", username).data("j_password", password).method(Connection.Method.POST).execute();

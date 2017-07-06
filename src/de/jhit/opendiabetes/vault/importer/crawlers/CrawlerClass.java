@@ -3,8 +3,6 @@ package de.jhit.opendiabetes.vault.importer.crawlers;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Date;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -15,9 +13,12 @@ import org.jsoup.Jsoup;
 public class CrawlerClass {
 	public static String UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
 
+	public void generateDocument(Map<String, String> loginCookies, String startDate, String endDate, String UserworkingDirecotry,
+			Logger logger, String configFilePath) {
 
-	public void GenerateDocument(Map<String, String> loginCookies, String startDate, String endDate, String uPDSArray, Logger logger) {
-		// TODO Auto-generated method stub
+		// this function checks if login is correct and entered dates are
+		// correct, it download CSV
+
 		logger.info("Inside class CrawlerClass");
 		try {
 			Connection.Response ReportDocument = Jsoup
@@ -32,30 +33,24 @@ public class CrawlerClass {
 					.data("datePicker1", endDate) // End date
 					.header("X-Requested-With", "XMLHttpRequest").method(Connection.Method.GET).execute();
 
-			//String userHome = System.getProperty("user.home");
-			String userHome = uPDSArray;
+			String userHome = UserworkingDirecotry;
 			String outputFolder = userHome + File.separator + "careLink-Export";
-			
-			System.out.println("File will be saved to location " + userHome + " with name: " + "\"careLink-Export"
-					+ (new Date().getTime()) + ".csv\"");
+
 			PrintWriter pw1 = new PrintWriter(new File(outputFolder + (new Date().getTime()) + ".csv"));
 			pw1.write(ReportDocument.body());
 			pw1.close();
 			System.out.println("Export Sucessfull!");
+			System.out.println("File will be saved to location " + userHome + " with name: " + "\"careLink-Export"
+					+ (new Date().getTime()) + ".csv\"");
 			logger.info("Export Sucessfull!");
-		//	return true;
 
 		} catch (IOException e) {
 			logger.info("There is an issue Downloading File. Please try again after some time!!");
-			System.out.println("There is an issue Downloading File. Please try checking path or try again after some time!!");
-			Path currentRelativePath = Paths.get("");
-			System.out.println("To change path check config file at " +currentRelativePath.toAbsolutePath());
-			
+			System.out.println(
+					"There is an issue Downloading File. Please try checking output path or try again after some time!!");
 
-			//return false;
 		}
 
-		
 	}
 
 }

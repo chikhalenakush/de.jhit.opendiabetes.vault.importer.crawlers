@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public class LanguageClass {
 
 	public int getReplacment(String lang, Logger logger) {
-		// TODO Auto-generated method stub
+		// This function is used when pressing keys.
 		logger.info("Inside Class, LanguageClass");
 		if(lang.contains("en")){
 			logger.info("Inside Class LanguageClass, English language");
@@ -20,9 +20,7 @@ public class LanguageClass {
 		if(lang.contains("fr")){
 			logger.info("Inside Class LanguageClass, French language");
 			return KeyEvent.VK_W;
-		}
-		
-		
+		}		
 		return 0;
 	}
 

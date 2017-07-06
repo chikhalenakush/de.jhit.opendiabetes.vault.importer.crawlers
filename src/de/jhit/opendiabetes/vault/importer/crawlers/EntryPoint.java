@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+
 
 import org.apache.commons.cli.ParseException;
 
@@ -23,33 +23,22 @@ public class EntryPoint {
 	public static void main(String args[]) throws SecurityException, AWTException, InterruptedException, IOException,
 			ParseException, java.text.ParseException, GeneralSecurityException {
 
-		// Class to get all the passed parameters and perform opetaions as
-		// required
-		
+		// This is the main entry point of program.
+
 		Logger logger = Logger.getLogger("MyLog");
 		FileHandler fh;
-		SimpleDateFormat formats = new SimpleDateFormat("dd-mm-HHMMSS");
-		
-		String userHome = System.getProperty("user.home");
-		System.out.println("Log is saved at location " + userHome);
-		fh = new FileHandler(userHome + "/CommandLine_" + formats.format(Calendar.getInstance().getTime()) + ".log");
+		SimpleDateFormat FORMATS = new SimpleDateFormat("dd-mm-HHMMSS");
 
-		// fh = new FileHandler("%h/" + "CrawlerProject_" /*+
-		// formats.format(Calendar.getInstance().getTime())*/ + ".log");
-
+		String PathForLogFile = System.getProperty("user.dir");
+		System.out.println("Log will be saved at location " + PathForLogFile);
+		fh = new FileHandler(PathForLogFile + "/CommandLine_" + FORMATS.format(Calendar.getInstance().getTime()) + ".log");
 		logger.addHandler(fh);
-		SimpleFormatter formatter = new SimpleFormatter();
-		// fh.setFormatter(formatter);
 		fh.setFormatter(new MyCustomFormatterForLogger());
 		logger.setUseParentHandlers(false);
-		
 		logger.info("Command Line application started");
-		logger.info("Log is saved at location " +System.getProperty("user.home") + "under name CommandLine");
-		
-		
-		FlagArgumentsClass Flagargument = new FlagArgumentsClass();
-
-		Flagargument.GetOptions(args,logger);
+		logger.info("Log is saved at location " + System.getProperty("user.home") + "under name CommandLine");
+		FlagArgumentsClass Flagargument = new FlagArgumentsClass(); // this class is called to get all the different arguments and it's values
+		Flagargument.RunDifferentArguments(args, logger); // This function will run program depending on flag/argument choosen
 
 	}
 

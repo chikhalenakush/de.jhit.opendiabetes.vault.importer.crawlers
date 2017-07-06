@@ -28,26 +28,26 @@ public class JunitIsloginCorrect {
 	private static Scanner keyboard;
 	static Boolean UserInputTrueorFalse = false;
 	private Map<String, String> loginCookies = new HashMap<String, String>();
-	public static String UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
+	public static String UDERAGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
 
 	@Parameterized.Parameters
 	public static Collection Login() {
 		System.out.println("Inside Test");
 		keyboard = new Scanner(System.in);
 		System.out.println("Enter UserName");
-		String tempusername = keyboard.next();
-		String temppassword = null;
+		String userNameFromUser = keyboard.next();
+		String passwordFromUser = null;
 		Console c = System.console();
 		if (c == null) {
 			System.err.println("No console.");
 
 			final JPasswordField pf = new JPasswordField();
-			temppassword = JOptionPane.showConfirmDialog(null, pf, "Password", JOptionPane.OK_CANCEL_OPTION,
+			passwordFromUser = JOptionPane.showConfirmDialog(null, pf, "Password", JOptionPane.OK_CANCEL_OPTION,
 					JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION ? new String(pf.getPassword()) : "";
 		} else {
 
 			System.out.println("Enter Passowrd");
-			temppassword = new String(c.readPassword("Password: "));
+			passwordFromUser = new String(c.readPassword("Password: "));
 		}
 
 		try {
@@ -64,7 +64,7 @@ public class JunitIsloginCorrect {
 
 		return Arrays.asList(new Object[][] {
 
-				{ tempusername, temppassword, UserInputTrueorFalse },
+				{ userNameFromUser, passwordFromUser, UserInputTrueorFalse },
 
 		});
 	}
@@ -79,13 +79,13 @@ public class JunitIsloginCorrect {
 	@Test
 	public void test() throws IOException, ParseException {
 
-		Boolean Result = GetLogin(UserName, Password);
+		Boolean Result = getLogin(UserName, Password);
 
 		assertEquals(expected, Result);
 
 	}
 
-	private Boolean GetLogin(String UserName, String Password) {
+	private Boolean getLogin(String UserName, String Password) {
 		// TODO Auto-generated method stub
 
 		try {

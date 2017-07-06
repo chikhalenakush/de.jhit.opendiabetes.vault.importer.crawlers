@@ -6,11 +6,11 @@ import org.junit.runner.notification.Failure;
 
 public class TestAppletWrapper {
 
-	public void AreDetailsCorrect() {
+	public void deviceAndSNTest() {
 		// TODO Auto-generated method stub
 
 		//Result result = JUnitCore.this.run(jt);
-		Result result = JUnitCore.runClasses(JunitAreDetailsCorrect.class);
+		Result result = JUnitCore.runClasses(JunitDeviceAndSNCorrect.class);
 		//Result result1 = JUnitCore.runClasses()
 		for (Failure failure : result.getFailures()) {
 			System.out.println(failure.toString());

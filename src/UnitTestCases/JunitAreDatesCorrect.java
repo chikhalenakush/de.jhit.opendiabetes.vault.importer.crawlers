@@ -16,10 +16,10 @@ import org.junit.runners.Parameterized;
 
 public class JunitAreDatesCorrect {
 	public static String dateFormat = "dd/MM/yyyy";
-	public Date FormatedStartDate;
-	public Date FormatedEndDate;
+	public Date formatedStartDate;
+	public Date formatedEndDate;
 	Boolean Result = false;
-	public String fromdate,todate;
+	public String fromDate,todate;
 	Boolean expected = false;
 	  
 	
@@ -40,7 +40,7 @@ public class JunitAreDatesCorrect {
 	 public JunitAreDatesCorrect(String startdate, 
 		        String enddate,Boolean expected) {
 		       System.out.println("TestJunit-> startdate:"+startdate+" enddate:"+enddate);
-		        this.fromdate = startdate;
+		        this.fromDate = startdate;
 		        this.todate = enddate;
 		        this.expected =expected;
 		     }
@@ -49,44 +49,42 @@ public class JunitAreDatesCorrect {
 	@Test
 	public void test() throws IOException, ParseException {
 
-//		System.out.println("from date for checking dates is " + fromdate);
-//		System.out.println("to date for checking dates is " + todate);
 	System.out.println("Expected result is " + expected);
 		
-	Result = (GetStratDate(fromdate) && GetEndDate(fromdate,todate)); 
+	Result = (getStratDate(fromDate) && getEndDate(fromDate,todate)); 
 		
 				assertEquals(expected, Result);	
 	
 		}	
 
-	private boolean GetEndDate(String fromdate,String todate) throws ParseException {
+	private boolean getEndDate(String fromDate,String todate) throws ParseException {
 	
 	
-				Date Todaydate = new Date();
+				Date todaydate = new Date();
 
-				SimpleDateFormat FormatTodayDate = new SimpleDateFormat(dateFormat);
-				String todayDate = FormatTodayDate.format(Todaydate);
+				SimpleDateFormat formatTodayDate = new SimpleDateFormat(dateFormat);
+				String todayDate = formatTodayDate.format(todaydate);
 				
-				Date ValidStardDate = new SimpleDateFormat(dateFormat).parse("01/01/1998");
-				FormatedStartDate = new SimpleDateFormat(dateFormat).parse(fromdate);
+				Date validStardDate = new SimpleDateFormat(dateFormat).parse("01/01/1998");
+				formatedStartDate = new SimpleDateFormat(dateFormat).parse(fromDate);
 
 				try {
-					FormatedEndDate = new SimpleDateFormat(dateFormat).parse(todate);
+					formatedEndDate = new SimpleDateFormat(dateFormat).parse(todate);
 				} catch (Exception e) {
 	
 					//System.out.println("End Date is not in correct format \n Date should be in Format of DD/MM/YYYY  Example: 13/03/2017");
 					return false;
 				}
 				try {
-					DateFormat ValidEndDate = new SimpleDateFormat(dateFormat); // To validate End date
-					ValidEndDate.setLenient(false);
-					ValidEndDate.parse(todate);
-					if (FormatedEndDate.after(new SimpleDateFormat(dateFormat).parse(todayDate))
-							|| FormatedEndDate.before(ValidStardDate)) {
+					DateFormat validEndDate = new SimpleDateFormat(dateFormat); // To validate End date
+					validEndDate.setLenient(false);
+					validEndDate.parse(todate);
+					if (formatedEndDate.after(new SimpleDateFormat(dateFormat).parse(todayDate))
+							|| formatedEndDate.before(validStardDate)) {
 						//System.out.println("You can only enter End date between 01/01/1998 and Today's Date!! ");
 						return false;
 					}
-					if (FormatedEndDate.before(FormatedStartDate)) {
+					if (formatedEndDate.before(formatedStartDate)) {
 						//System.out.println("End Date cannot be earlier than Start date");
 						return false;
 					}
@@ -99,34 +97,34 @@ public class JunitAreDatesCorrect {
 
 	}
 
-	private boolean GetStratDate(String fromdate) throws ParseException {
+	private boolean getStratDate(String fromDate) throws ParseException {
 		// TODO Auto-generated method stub
 				// TODO Auto-generated method stub
 				
-						SimpleDateFormat FormatTodayDate = new SimpleDateFormat(dateFormat); // to format today's date as DD/MM/YYYY
-						FormatTodayDate.setLenient(false);
-						Date Todaydate = new Date();
-						String todayDate = FormatTodayDate.format(Todaydate);
+						SimpleDateFormat formatTodayDate = new SimpleDateFormat(dateFormat); // to format today's date as DD/MM/YYYY
+						formatTodayDate.setLenient(false);
+						Date todaydate = new Date();
+						String todayDate = formatTodayDate.format(todaydate);
 						
 						
 
-						Date ValidStardDate = new SimpleDateFormat(dateFormat).parse("01/01/1998"); 
+						Date validStardDate = new SimpleDateFormat(dateFormat).parse("01/01/1998"); 
 						// To validate Beginning of Date
 
 						try {
 							
-							FormatedStartDate = new SimpleDateFormat(dateFormat).parse(fromdate);
+							formatedStartDate = new SimpleDateFormat(dateFormat).parse(fromDate);
 						} catch (Exception e) {
 				
 							//System.out.println("Start Date is not in correct format \n Date should be in Format of DD/MM/YYYY  Example: 13/03/2017");
 							return false;
 						}
 						try {
-							DateFormat ValidStartdate = new SimpleDateFormat(dateFormat); // To validate start date
-							ValidStartdate.setLenient(false);
-							ValidStartdate.parse(fromdate);
-							if (FormatedStartDate.before(ValidStardDate)
-									|| FormatedStartDate.after(new SimpleDateFormat(dateFormat).parse(todayDate))) {
+							DateFormat validStartdate = new SimpleDateFormat(dateFormat); // To validate start date
+							validStartdate.setLenient(false);
+							validStartdate.parse(fromDate);
+							if (formatedStartDate.before(validStardDate)
+									|| formatedStartDate.after(new SimpleDateFormat(dateFormat).parse(todayDate))) {
 								//System.out.println("You can only enter Start date between 01/01/1998 and Today's Date!!");
 								return false;
 							}
@@ -140,7 +138,5 @@ public class JunitAreDatesCorrect {
 				
 
 	}
-
-//		assertEquals(CrawlerCarelink.TrueorFalse, result);
 	}
 

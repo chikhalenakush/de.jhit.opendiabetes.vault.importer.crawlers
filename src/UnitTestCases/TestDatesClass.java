@@ -9,7 +9,7 @@ import org.junit.runner.notification.Failure;
 
 public class TestDatesClass {
 
-	public void callmethod() throws IOException, ParseException {
+	public void AreDatesCorrect() throws IOException, ParseException {
 		// TODO Auto-generated method stub
 	
 		

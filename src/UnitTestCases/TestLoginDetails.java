@@ -9,7 +9,7 @@ import org.junit.runner.notification.Failure;
 
 public class TestLoginDetails {
 
-public void IsLoginCorrect() throws IOException, ParseException {
+public void isLoginCorrect() throws IOException, ParseException {
 	// TODO Auto-generated method stub
 
 	

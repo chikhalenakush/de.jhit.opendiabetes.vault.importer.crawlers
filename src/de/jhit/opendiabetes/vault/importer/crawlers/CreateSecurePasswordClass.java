@@ -18,14 +18,11 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class CreateSecurePasswordClass {
 
-	public String[] CreateHash(String username, String password, Logger logger) throws GeneralSecurityException, IOException {
+	public String[] createHash(String username, String password, Logger logger) throws GeneralSecurityException, IOException {
 		// TODO Auto-generated method stub
-		logger.info("Inside Class CreateSecurePasswordClass, Method CreateHash");
+		logger.info("Inside Class CreateSecurePasswordClass, Method createHash");
 		String userkey = username;
-		/*
-		 * if (password == null) { throw new
-		 * IllegalArgumentException("Run with -Dpassword=<password>"); }
-		 */
+		
 
 		// The salt (probably) can be stored along with the encrypted data
 		byte[] salt = new String("12345678").getBytes();
@@ -39,11 +36,11 @@ public class CreateSecurePasswordClass {
 		SecretKeySpec key = createSecretKey(userkey.toCharArray(), salt, iterationCount, keyLength,logger);
 
 		String originalPassword = password;
-		//System.out.println("Original password: " + originalPassword);
+		
 		String encryptedPassword = encrypt(originalPassword, key);
-		//System.out.println("Encrypted password: " + encryptedPassword);
+		
 		String decryptedPassword = decrypt(encryptedPassword, key,logger);
-		//System.out.println("Decrypted password: " + decryptedPassword);
+		
 		return new String[] { encryptedPassword, decryptedPassword };
 
 	}

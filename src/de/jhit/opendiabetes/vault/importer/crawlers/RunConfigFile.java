@@ -5,8 +5,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.util.logging.Logger;
 
@@ -16,41 +14,59 @@ public class RunConfigFile {
 	String UPDSArray[];
 	String DecrypetedPassowrd = null;
 
-	public void runfile(Logger logger) throws SecurityException, AWTException, InterruptedException, GeneralSecurityException {
+	public void runFile(Logger logger, String configFilePath) throws SecurityException, AWTException, InterruptedException, GeneralSecurityException {
 		// TODO Auto-generated method stub
 		try {
 			logger.info("Inside class RunConfigFile");
-			Path currentRelativePath = Paths.get("");
 
-			File f = new File(currentRelativePath.toAbsolutePath() + "/config.txt");
+			File f = new File(configFilePath);
 			if (f.exists()) {
 				logger.info("Inside class RunConfigFile, File exist");
 				BufferedReader b = new BufferedReader(new FileReader(f));
 				GetUserNamePasswordDeviceSNFromFileClass GetUPDS = new GetUserNamePasswordDeviceSNFromFileClass();
 				logger.info("Inside class RunConfigFile, Geeting info from config file");
-				 UPDSArray = GetUPDS.GetUPDSArray(b,logger);
-
-				CreateSecurePasswordClass CreateSecurePassword = new CreateSecurePasswordClass();
+				 UPDSArray = GetUPDS.getUsernamePassDevPumpSN(b,logger);
 				byte[] salt = new String("12345678").getBytes();
 
 				// Decreasing this speeds down startup time and can be useful
 				// during testing, but it also makes it easier for brute force
 				// attackers
+				
+				/*************
+				 * 
+				 * UPDSArray[0] =Username 
+				 * UPDSArray[1] = Password 
+				 * UPDSArray[2] = device
+				 * UPDSArray[3] = pump
+				 *  UPDSArray[4] = SN
+				 */
+				
+				
 				int iterationCount = 40000;
 				int keyLength = 128;
 				try{
 				if (UPDSArray[0] != null & !UPDSArray[0].isEmpty() && UPDSArray[1] != null && !UPDSArray[1].isEmpty()) {
+					
+					// password is decrypted from config file, and hence username and passowrd are checked if available
+					
 					logger.info("Inside class RunConfigFile, Username and Password is not empty");
 					SecretKeySpec createSecretKey = CreateSecurePasswordClass.createSecretKey(UPDSArray[0].toCharArray(),
 							salt, iterationCount, keyLength,logger);
 
 					DecrypetedPassowrd = CreateSecurePasswordClass.decrypt(UPDSArray[1], createSecretKey,logger);
-					if (UPDSArray[2] != null && !UPDSArray[2].isEmpty() && UPDSArray[3] != null && !UPDSArray[3].isEmpty()) {
+					
+					if (UPDSArray[2] != null && !UPDSArray[2].isEmpty() && UPDSArray[3] != null && !UPDSArray[3].isEmpty()
+							&& UPDSArray[4] != null && !UPDSArray[4].isEmpty()) {
+						
 						LoginDeatilsClass LoginDetails = new LoginDeatilsClass();
 						logger.info("Inside class RunConfigFile, device and SN number is not empty");
-						if (LoginDetails.CheckConnection(UPDSArray[0], DecrypetedPassowrd,logger)) {
+						
+						if (LoginDetails.checkConnection(UPDSArray[0], DecrypetedPassowrd,logger)) {
+							
 							SimulateMouseClass SM = new SimulateMouseClass();
-							SM.startmagic(UPDSArray[0], DecrypetedPassowrd, UPDSArray[2], UPDSArray[3],logger);
+							
+							SM.startMouseClicks(UPDSArray[0], DecrypetedPassowrd, UPDSArray[2], UPDSArray[3],UPDSArray[4],logger);
+							
 						} else {
 
 						}
@@ -71,7 +87,7 @@ public class RunConfigFile {
 			
 			}else {
 				logger.info("Inside class RunConfigFile,File does not exist");
-				System.out.println("Config File does not exist");
+				System.out.println("Config File does not exist, Please check provided path");
 				return;
 			}
 		} catch (IOException e) {

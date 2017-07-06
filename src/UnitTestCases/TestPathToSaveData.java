@@ -8,13 +8,13 @@ import org.junit.runner.notification.Failure;
 
 public class TestPathToSaveData {
 
-	public void CheckPath()throws IOException, ParseException {
+	public void checkPath()throws IOException, ParseException {
 		// TODO Auto-generated method stub
 	
 		
-		//Result result = JUnitCore.this.run(jt);
+		
 		Result result = JUnitCore.runClasses(JunitIsPathCorrect.class);
-		//Result result1 = JUnitCore.runClasses()
+		
 		for (Failure failure : result.getFailures()) {
 			System.out.println(failure.toString());
 		}

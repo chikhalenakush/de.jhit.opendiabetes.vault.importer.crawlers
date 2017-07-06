@@ -1,7 +1,7 @@
 #Username for access on http://carelink.minimed.eu
-UserName: chikssss
+UserName: chikhalehero
 #Password for access on http://carelink.minimed.eu
-Password: kfDqtNdiIJ3fOH4hmKbk9A==:hSjhcyV1/EXXuJZ36DwGVA==
+Password: /ZGC73sGzvsAJP4BFIaGsQ==:8uazskMjdj5AwncGjM3ioA==
 #Device for pump communication. Available options are: stick, bgdevice
 Device: stick
 #Serial number of the pump you upload data from. 10 characters for Minimed 600 pumps. 6 characters for Paradgim pumps
