@@ -455,13 +455,13 @@ public class FlagArgumentsClass {
 								}
 
 							}
+							
 						}
-
+						TempCounterforThrowingerror++;
 					}
 
 					TempCounterforThrowingerror++;
-					System.out.println(
-							"Arguments are not in correct combination please try -help or -h for getting correct combination");
+				//	System.out.println("Arguments are not in correct combination please try -help or -h for getting correct combination");
 
 				}
 
