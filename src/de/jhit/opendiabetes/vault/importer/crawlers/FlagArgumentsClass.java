@@ -69,7 +69,7 @@ public class FlagArgumentsClass {
 							+ "   -i, -init FILE	initializes a new config file at the given path.\n"
 							+ "   -c, -config FILE	defines the used config file.\n"
 							+ "   -o, -output-path FILE defines output path (Default is ./).\n"
-							+ "   -crawler	starts in crawler mode. --from and --to is required.\n"
+							+ "   -crawler	starts in crawler mode. -from and -to is required.\n"
 							+ "   -from	defines start time point for the dataset.\n"
 							+ "   -to		defines end time point for the dataset.\n"
 							+ "   -upload	starts in upload mode.\n"
@@ -131,12 +131,14 @@ public class FlagArgumentsClass {
 						 * be popped up, because we cannot mask password using
 						 * IDE
 						 */
-						System.err.println("No console.");
+						//System.err.println("No console.");
+						System.out.println("Enter password: ");
+						password = reader.nextLine();
 						logger.info("Ask user for password");
-						final JPasswordField pf = new JPasswordField();
-						password = JOptionPane.showConfirmDialog(null, pf, "Password", JOptionPane.OK_CANCEL_OPTION,
-								JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION ? new String(pf.getPassword())
-										: "";
+//						final JPasswordField pf = new JPasswordField();
+//						password = JOptionPane.showConfirmDialog(null, pf, "Password", JOptionPane.OK_CANCEL_OPTION,
+//								JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION ? new String(pf.getPassword())
+//										: "";
 					} else {
 
 						logger.info("Ask user for password");
@@ -254,26 +256,19 @@ public class FlagArgumentsClass {
 					}
 
 				}
-
-				Boolean Isupload = false;
+				
+				
+				/****************************************
+				 * Testing Upload section
+				 */
+				
 				if (commandLine.getOptions().length > 1) {
-					if (((commandLine.getOptions()[0].getOpt() == "c"
-							|| commandLine.getOptions()[0].getOpt() == "config")
+					if (((commandLine.getOptions()[0].getOpt() == "test")
 							&& (commandLine.getOptions()[1].getOpt() == "upload"
 									|| commandLine.getOptions()[1].getOpt() == "u"))
 							|| ((commandLine.getOptions()[0].getOpt() == "upload"
 									|| commandLine.getOptions()[0].getOpt() == "u")
-									&& (commandLine.getOptions()[1].getOpt() == "c"
-											|| commandLine.getOptions()[1].getOpt() == "config"))) {
-						Isupload = true;
-					}
-				}
-
-				if (Isupload) { // if first two arguments are -config and
-								// -upload
-					if (commandLine.hasOption("test")) { // and if argument
-															// contains test run
-															// test
+									&& (commandLine.getOptions()[1].getOpt() == "test"))) {
 						System.out.println("Starting Unit Test case for Applet Wrapper");
 
 						UnitTestCases.TestAppletWrapper TestApplet = new UnitTestCases.TestAppletWrapper();
@@ -285,20 +280,43 @@ public class FlagArgumentsClass {
 						TestLogin.isLoginCorrect();
 						TempCounterforThrowingerror++;
 						return;
+						
 					}
-					logger.info("Inside upload");
-					System.out.println("Inside upload");
-					RunConfigFile RunConfig = new RunConfigFile();
-					RunConfig.runFile(logger, configFilePath);
-					TempCounterforThrowingerror++;
-					return;
 				}
+				
+				
+				if (commandLine.getOptions().length > 1) {
+					if (((commandLine.getOptions()[0].getOpt() == "test")
+							&& (commandLine.getOptions()[1].getOpt() == "upload"
+									|| commandLine.getOptions()[1].getOpt() == "u"))
+							|| ((commandLine.getOptions()[0].getOpt() == "upload"
+									|| commandLine.getOptions()[0].getOpt() == "u")
+									&& (commandLine.getOptions()[1].getOpt() == "test"))) {
+						System.out.println("Starting Unit Test case for Applet Wrapper");
 
-				if (commandLine.hasOption("c") || commandLine.hasOption("config")) {
+						UnitTestCases.TestAppletWrapper TestApplet = new UnitTestCases.TestAppletWrapper();
+						System.out.println("Unit Test case for From Device and SN Number");
+						TestApplet.deviceAndSNTest();
 
-					if (commandLine.hasOption("test") && commandLine.hasOption("crawler")) {
-						// if argument contains test and crawler run test
-
+						UnitTestCases.TestLoginDetails TestLogin = new UnitTestCases.TestLoginDetails();
+						System.out.println("Unit Test case for UserName and Password");
+						TestLogin.isLoginCorrect();
+						TempCounterforThrowingerror++;
+						return;
+						
+					}
+				}
+				
+				
+				/****************************************
+				 * Testing Download i.e crawler section
+				 */
+				
+				if (commandLine.getOptions().length > 1) {
+					if (((commandLine.getOptions()[0].getOpt() == "test")
+							&& (commandLine.getOptions()[1].getOpt() == "crawler"))
+							|| ((commandLine.getOptions()[0].getOpt() == "crawler")
+									&& (commandLine.getOptions()[1].getOpt() == "test"))) {
 						System.out.println("Starting Unit Test case for Crawler");
 
 						UnitTestCases.TestDatesClass TestDates = new UnitTestCases.TestDatesClass();
@@ -315,12 +333,43 @@ public class FlagArgumentsClass {
 						TestPath.checkPath();
 						TempCounterforThrowingerror++;
 						return;
-
+						
 					}
+				}
+				
+
+				Boolean Isupload = false;
+				if (commandLine.getOptions().length > 1) {
+					if (((commandLine.getOptions()[0].getOpt() == "c"
+							|| commandLine.getOptions()[0].getOpt() == "config")
+							&& (commandLine.getOptions()[1].getOpt() == "upload"
+									|| commandLine.getOptions()[1].getOpt() == "u"))
+							|| ((commandLine.getOptions()[0].getOpt() == "upload"
+									|| commandLine.getOptions()[0].getOpt() == "u")
+									&& (commandLine.getOptions()[1].getOpt() == "c"
+											|| commandLine.getOptions()[1].getOpt() == "config"))) {
+						Isupload = true;
+					}
+				}
+
+				if (Isupload) { // if first two arguments are -config and
+					
+					logger.info("Inside upload");
+					System.out.println("Starting upload Program");
+					RunConfigFile RunConfig = new RunConfigFile();
+					RunConfig.runFile(logger, configFilePath);
+					TempCounterforThrowingerror++;
+					return;
+				}
+				
+
+				if (commandLine.hasOption("c") || commandLine.hasOption("config")) {
+					
 					if (commandLine.hasOption("from") && commandLine.hasOption("to")
 							&& commandLine.hasOption("crawler")) {
 						// To generate CSV document
 						logger.info("Input entered by user is for Crawling");
+						System.out.println("Starting Crawler Program");
 
 						CheckDatesClass checkdates = new CheckDatesClass();
 						if (checkdates.getStratDate(fromDate, logger)) {

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.openqa.selenium.By;
@@ -38,8 +39,7 @@ public class SimulateMouseClass {
 		}
 		if (pump.toLowerCase().equals("minimed")) {  //Paradgim
 			minimedpump = true;
-		} else 
-		if(pump.toLowerCase().equals("paradigm"))
+		} else if(pump.toLowerCase().equals("paradigm"))
 		{
 			paradigmpump = true;
 		} else{
@@ -65,8 +65,7 @@ public class SimulateMouseClass {
 			}
 
 		}
-	}
-		if(paradigmpump){
+	} else 	if(paradigmpump){
 			if (sn.length() != 6) {
 				logger.info("SN Number should be of 6 characters (numeric only), Because Paradigm Pump is selected");
 				System.out.println(
@@ -108,6 +107,8 @@ public class SimulateMouseClass {
 
 				String location = SimulateMouseClass.class.getResource("SimulateMouseClass.class").toString();
 
+				url = this.getClass().getResource("/IEDriverServer.exe");
+				//System.out.println();
 				
 				/********************
 				 * checking if program is ran from Jar
@@ -115,6 +116,7 @@ public class SimulateMouseClass {
 				 *  IEWebdriver.exe file is extracted from jar and saved to current location from where jar is ran
 				 
 				 */
+				
 				
 				if (location.startsWith("rsrc:") || location.endsWith(".jar")
 						&& !new File(location.substring(location.indexOf(':') + 1)).isDirectory()) {
@@ -143,7 +145,7 @@ public class SimulateMouseClass {
 				
 				else {
 					logger.info("(Inside Method Startmagic) Setthing IEDriver path directly from Project folder ");
-					fileWhereIEDriverislocated = new File(url.getFile());
+					fileWhereIEDriverislocated = Paths.get(url.toURI()).toFile();
 				}
 
 				if (fileWhereIEDriverislocated.exists()) {
@@ -259,6 +261,12 @@ public class SimulateMouseClass {
 			logger.info("Please Check if the correct IEDriver is selected OR IE settings are not correctly");
 			System.out.println(
 					"Please Check if the correct IEDriver is selected OR IE settings are not correctly");
+			System.out.println(
+					"You cannot open IE browser instance if Protected Mode settings are not the same for all zones OR if the browser is zoomed.\n"
+					+ "To resolve this, Open IE Browser and go to Internet Options windows.\n"
+					+ "Click on Security tab and make sure 'Internet','Local Intranet','Trusted sites'\n"
+					+ "and 'Restricted sites' have 'Enable Protected Mode' either checked or unchecked for all options.\n"
+					+ "Apply and save the settings and re-run the test code. It should work.\n");
 			return;
 		} finally {
 			
@@ -298,9 +306,9 @@ public class SimulateMouseClass {
 		robot.keyRelease(KeyEvent.VK_ALT);
 		robot.keyRelease(KeyEvent.VK_ALT);
 		robot.keyRelease(KeyEvent.VK_ALT);
-		robot.keyRelease(KeyEvent.VK_ALT);		
+		robot.keyRelease(KeyEvent.VK_ALT);	
 		
-	
+		if(minimedpump){
 		Thread.sleep(2000);
 		robot.keyPress(KeyEvent.VK_SHIFT);
 		robot.keyPress(KeyEvent.VK_TAB);
@@ -315,13 +323,31 @@ public class SimulateMouseClass {
 		robot.keyRelease(KeyEvent.VK_SHIFT);
 		robot.keyRelease(KeyEvent.VK_TAB);
 		
-		if(minimedpump){
+		
 		Thread.sleep(200);
 		robot.keyPress(KeyEvent.VK_DOWN);
 		robot.keyRelease(KeyEvent.VK_DOWN);
 		}
 		
 		if(paradigmpump){
+			Thread.sleep(2000);
+			robot.keyPress(KeyEvent.VK_SHIFT);
+			robot.keyPress(KeyEvent.VK_TAB);
+			Thread.sleep(200);
+			robot.keyRelease(KeyEvent.VK_SHIFT);
+			robot.keyRelease(KeyEvent.VK_TAB);
+
+			Thread.sleep(200);
+			robot.keyPress(KeyEvent.VK_SHIFT);
+			robot.keyPress(KeyEvent.VK_TAB);
+			Thread.sleep(200);
+			robot.keyRelease(KeyEvent.VK_SHIFT);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			
+			
+			Thread.sleep(200);
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
 			robot.keyPress(KeyEvent.VK_DOWN);
 			robot.keyRelease(KeyEvent.VK_DOWN);
 			robot.keyPress(KeyEvent.VK_DOWN);
