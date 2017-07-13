@@ -413,7 +413,7 @@ public class FlagArgumentsClass {
 										try {
 											if (UPDSArray[0] != null & !UPDSArray[0].isEmpty() && UPDSArray[1] != null
 													&& !UPDSArray[1].isEmpty()
-													&& UPDSArray[4] != null & !UPDSArray[4].isEmpty()) {
+													/*&& UPDSArray[4] != null & !UPDSArray[4].isEmpty()*/) {
 												logger.info("username and passowrd is not empty");
 												SecretKeySpec createSecretKey = CreateSecurePasswordClass
 														.createSecretKey(UPDSArray[0].toCharArray(), salt,
