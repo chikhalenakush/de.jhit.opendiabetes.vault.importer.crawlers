@@ -1,0 +1,10 @@
+Medtronic Diabetes CareLink Personal Data Export File (v1.0.1) 
+PATIENT INFO
+Name,hero herochikhale
+Report Range,15/5/17,to,20/6/17
+DEVICE INFO
+Data Exported on,13/7/17 7:36 AM
+DEVICE DATA (0 records)
+Data Range,n/a,to,n/a
+Index,Date,Time,Timestamp,New Device Time,BG Reading (mg/dL),Linked BG Meter ID,Temp Basal Amount (U/h),Temp Basal Type,Temp Basal Duration (hh:mm:ss),Bolus Type,Bolus Volume Selected (U),Bolus Volume Delivered (U),Bolus Duration (hh:mm:ss),Prime Type,Prime Volume Delivered (U),Suspend,Rewind,BWZ Estimate (U),BWZ Target High BG (mg/dL),BWZ Target Low BG (mg/dL),BWZ Carb Ratio (Exchanges),BWZ Insulin Sensitivity (mg/dL),BWZ Carb Input (Exchanges),BWZ BG Input (mg/dL),BWZ Correction Estimate (U),BWZ Food Estimate (U),BWZ Active Insulin (U),Alarm,Sensor Calibration BG (mg/dL),Sensor Glucose (mg/dL),ISIG Value,Daily Insulin Total (U),Raw-Type,Raw-Values,Raw-ID,Raw-Upload ID,Raw-Seq Num,Raw-Device Type
+

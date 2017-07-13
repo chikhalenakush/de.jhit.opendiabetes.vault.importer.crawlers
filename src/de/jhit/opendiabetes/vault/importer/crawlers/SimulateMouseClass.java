@@ -122,17 +122,17 @@ public class SimulateMouseClass {
 						&& !new File(location.substring(location.indexOf(':') + 1)).isDirectory()) {
 					logger.info("(Inside Method Startmagic) Running from Jar file ");
 					
-					System.out.println("using this.getclass "+ this.getClass().getClassLoader().getResourceAsStream("IEDriverServer.exe"));
+					//System.out.println("using this.getclass "+ this.getClass().getClassLoader().getResourceAsStream("IEDriverServer.exe"));
 					
 					
-					System.out.println("using new "+  SimulateMouseClass.class.getClass().getResourceAsStream("/IEDriver/IEDriverServer.exe"));
+				//	System.out.println("using new "+  SimulateMouseClass.class.getClass().getResourceAsStream("/IEDriver/IEDriverServer.exe"));
 					
 					 File filetemp = new File("TempIeWebdriver.exe");
 					 if (!filetemp.exists()) {
 					      InputStream link = (this.getClass().getClassLoader().getResourceAsStream("IEDriverServer.exe"));//   SimulateMouseClass.class.getClass().getResourceAsStream("/IEDriver/IEDriverServer.exe"));
 					      Files.copy(link, filetemp.getAbsoluteFile().toPath());
 					 }
-					 System.out.println("file location "+ filetemp.getAbsoluteFile().toPath().toString());
+					// System.out.println("file location "+ filetemp.getAbsoluteFile().toPath().toString());
 										logger.info("(Inside Method Startmagic) Setthing IEDriver path from Extracted Jar ");
 					fileWhereIEDriverislocated = new File(filetemp.getAbsoluteFile().toPath().toString());
 					//fileWhereIEDriverislocated = new File(destExtractJarDir + "/IEDriverServer.exe");

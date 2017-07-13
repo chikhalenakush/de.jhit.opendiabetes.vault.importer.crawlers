@@ -162,7 +162,7 @@ public class FlagArgumentsClass {
 			 * ****************************************
 			 */
 
-			Option option_Upload_short = Option.builder("u").hasArg().required(false).desc("The U option").build();
+			Option option_Upload_short = Option.builder("u").required(false).desc("The U option").build();
 			Option option_Upload = Option.builder("upload").required(false).desc("The upload option").build();
 
 			Option option_Crawler = Option.builder("crawler").required(false).desc("The Crawler option").build();
@@ -340,14 +340,12 @@ public class FlagArgumentsClass {
 
 				Boolean Isupload = false;
 				if (commandLine.getOptions().length > 1) {
-					if (((commandLine.getOptions()[0].getOpt() == "c"
-							|| commandLine.getOptions()[0].getOpt() == "config")
-							&& (commandLine.getOptions()[1].getOpt() == "upload"
-									|| commandLine.getOptions()[1].getOpt() == "u"))
-							|| ((commandLine.getOptions()[0].getOpt() == "upload"
-									|| commandLine.getOptions()[0].getOpt() == "u")
-									&& (commandLine.getOptions()[1].getOpt() == "c"
-											|| commandLine.getOptions()[1].getOpt() == "config"))) {
+					if (((commandLine.getOptions()[0].getOpt() == "c" || commandLine.getOptions()[0].getOpt() == "config")
+							&&
+							(commandLine.getOptions()[1].getOpt() == "upload"|| commandLine.getOptions()[1].getOpt() == "u"))						
+							|| 
+							((commandLine.getOptions()[0].getOpt() == "upload"|| commandLine.getOptions()[0].getOpt() == "u")				
+									&& (commandLine.getOptions()[1].getOpt() == "c"	|| commandLine.getOptions()[1].getOpt() == "config"))) {
 						Isupload = true;
 					}
 				}
