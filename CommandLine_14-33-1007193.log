@@ -1,0 +1,48 @@
+
+Command Line application started
+
+Log is saved at location C:\Users\achikhaleunder name CommandLine
+
+Inside Class FlagArgumentsClass
+
+Getting all the user input flag and its value
+
+Input entered by user is for Crawling
+
+Inside Class CheckDatesClass, Method getStratDate
+
+from date is correct
+
+Inside Class CheckDatesClass, Method getEndDate
+
+End date is correct
+
+Inside logic for checking config file availabe for crawler
+
+config file is availabe
+
+Inside class GetUserNamePasswordDeviceSNFromFileClass
+
+Inside class GetUserNamePasswordDeviceSNFromFileClass, Get userName from command line input
+
+Inside class GetUserNamePasswordDeviceSNFromFileClass, Get password from command line input
+
+Function is called to get Encrypted username and passowrd
+
+username and passowrd is not empty
+
+Inside Class CreateSecurePasswordClass, Method createSecretKey
+
+Inside Class CreateSecurePasswordClass, Method decrypt
+
+Inside class checkConnection
+
+correct Username and Password
+
+username and passowrd Enetered are correct
+
+Inside class CrawlerClass
+
+Export Sucessfull!
+
+CSV FIle generated
