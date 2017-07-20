@@ -77,7 +77,10 @@ public class FlagArgumentsClass {
 							+ "   Combination to run upload program : java -jar XYZ.jar -c or --config completepathwithfilename "
 							+ " -u,--upload\n"
 							+ "   Combination to run crawler program : java -jar XYZ.jar -c,--config completepathwithfilename "
-							+ "-crawler -from 15/05/2017 -to 20/06/2017 --output outputfolderpath \n");
+							+ "-crawler -from 15/05/2017 -to 20/06/2017 --output outputfolderpath \n"
+							+ "Date Format:\n"
+							+ "English: DD/MM/YYYY\n"
+							+ "German: DD.MM.YYYY\n");
 					TempCounterforThrowingerror++;
 					return;
 				}
