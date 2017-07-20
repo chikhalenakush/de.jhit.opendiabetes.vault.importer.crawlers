@@ -63,6 +63,15 @@ public class RunConfigFile {
 						
 						if (LoginDetails.checkConnection(UPDSArray[0], DecrypetedPassowrd,logger)) {
 							
+							String Lang = LoginDetails.GetLanguage();
+							if(Lang== null)
+							{
+								System.out.println(
+										"Language of User logged in is not supporetd by Carelink Java program!! \n"
+										+ "Please try with user who has language as English or German");
+								return;
+							}
+							
 							SimulateMouseClass SM = new SimulateMouseClass();
 							
 							SM.startMouseClicks(UPDSArray[0], DecrypetedPassowrd, UPDSArray[2], UPDSArray[3],UPDSArray[4],logger);

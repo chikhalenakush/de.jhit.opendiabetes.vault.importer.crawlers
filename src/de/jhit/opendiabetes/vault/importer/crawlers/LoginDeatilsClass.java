@@ -34,4 +34,17 @@ public class LoginDeatilsClass {
 		}
 
 	}
+
+	
+
+	public String GetLanguage() {
+		// TODO Auto-generated method stub
+		
+		if(loginCookies.toString().contains("locale=de")){
+			return "de";
+		}else if(loginCookies.toString().contains("locale=en")){
+			return "en";
+		}
+		return null;
+	}
 }

@@ -334,15 +334,17 @@ public class FlagArgumentsClass {
 						// To generate CSV document
 						logger.info("Input entered by user is for Crawling");
 						System.out.println("Starting Crawler Program");
+						
+						
 
-						CheckDatesClass checkdates = new CheckDatesClass();
-						if (checkdates.getStratDate(fromDate, logger)) {
-
-							logger.info("from date is correct");
-
-							if (checkdates.getEndDate(fromDate, toDate, logger)) {
-
-								logger.info("End date is correct");
+//						CheckDatesClass checkdates = new CheckDatesClass();
+//						if (checkdates.getStratDate(fromDate, logger)) {
+//
+//							logger.info("from date is correct");
+//
+//							if (checkdates.getEndDate(fromDate, toDate, logger)) {
+//
+//								logger.info("End date is correct");
 								try {
 									logger.info("Inside logic for checking config file availabe for crawler");
 									Path currentRelativePath = Paths.get("");
@@ -390,6 +392,25 @@ public class FlagArgumentsClass {
 												if (LoginDetails.checkConnection(UPDSArray[0], decrypetedPassowrd,
 														logger)) {
 													logger.info("username and passowrd Enetered are correct");
+													String Lang = LoginDetails.GetLanguage();
+													if(Lang== null)
+													{
+														System.out.println(
+																"Language of User logged in is not supporetd by Carelink Java program!! \n"
+																+ "Please try with user who has language as English or German");
+														return;
+													}
+													
+													CheckDatesClass checkdates = new CheckDatesClass(Lang);
+													if (checkdates.getStratDate(fromDate, logger)) {
+
+														logger.info("from date is correct");
+
+														if (checkdates.getEndDate(fromDate, toDate, logger)) {
+
+															logger.info("End date is correct");
+													
+													
 													if (commandLine.hasOption("o")) {
 														CrawlerClass Crawler = new CrawlerClass();
 														Crawler.generateDocument(LoginDetails.getcookies(), fromDate,
@@ -399,6 +420,8 @@ public class FlagArgumentsClass {
 														CrawlerClass Crawler = new CrawlerClass();
 														Crawler.generateDocument(LoginDetails.getcookies(), fromDate,
 																toDate, userHomepath, logger, configFilePath);
+													}
+														}
 													}
 
 													logger.info("CSV FIle generated");
@@ -424,12 +447,12 @@ public class FlagArgumentsClass {
 							
 						}
 						TempCounterforThrowingerror++;
-					}
+					
 
 					//TempCounterforThrowingerror++;
 				//	System.out.println("Arguments are not in correct combination please try --help or -h for getting correct combination");
 
-				}
+				
 
 			} catch (ParseException exception) {
 				TempCounterforThrowingerror++;

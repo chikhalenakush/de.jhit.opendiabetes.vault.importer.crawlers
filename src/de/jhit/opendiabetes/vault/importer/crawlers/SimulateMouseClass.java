@@ -227,6 +227,13 @@ public class SimulateMouseClass {
 				LanguageClass Language = new LanguageClass();
 
 				replacmentForKeyN = Language.getReplacment(lang, logger);
+				if(replacmentForKeyN == 0)
+				{
+					System.out.println(
+							"Language of User logged in is not supporetd by Carelink Java program!! \n"
+							+ "Please try with user who has language as English or German");
+					return;
+				}
 
 			} catch (Exception e) {
 				logger.info("Site not fully loaded");

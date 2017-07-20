@@ -23,15 +23,16 @@ public class CrawlerClass {
 		try {
 			Connection.Response ReportDocument = Jsoup
 					.connect("https://carelink.minimed.eu/patient/main/selectCSV.do?t=11?t=11?t=11?t=11").timeout(60000)
-					.ignoreContentType(false).userAgent(UserAgent).cookies(loginCookies)
-					.header("Content-Type", "text/csv; charset=UTF-8")
-					.header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-					.header("Content-length", "101").data("report", "11").data("listSeparator", ",")
-					// .data("customerID","50577452") // customer Id can be
+					/*.ignoreContentType(false).userAgent(UserAgent)*/.cookies(loginCookies)
+					/*.header("Content-Type", "text/csv; charset=UTF-8")
+					.header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,;q=0.8")
+					.header("Content-length", "101").data("org.apache.struts.taglib.html.TOKEN", "53f325519c62adcec1a3128908017474")*/
+					.data("report", "11").data("listSeparator", ",")
+					 //.data("customerID","50577452") // customer Id can be
 					// optional.
 					.data("datePicker2", startDate) // start date
 					.data("datePicker1", endDate) // End date
-					.header("X-Requested-With", "XMLHttpRequest").method(Connection.Method.GET).execute();
+					/*.header("X-Requested-With", "XMLHttpRequest")*/.method(Connection.Method.GET).execute();
 
 			String userHome = UserworkingDirecotry;
 			String outputFolder = userHome + File.separator + "careLink-Export";

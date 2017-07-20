@@ -12,16 +12,13 @@ public class LanguageClass {
 		if(lang.contains("en")){
 			logger.info("Inside Class LanguageClass, English language");
 			return KeyEvent.VK_N;
-		}
+		} else 
 		if(lang.contains("de")){
 			logger.info("Inside Class LanguageClass, Deutsch language");
 			return KeyEvent.VK_W;
-		}
-		if(lang.contains("fr")){
-			logger.info("Inside Class LanguageClass, French language");
-			return KeyEvent.VK_W;
-		}		
+		}else{		
 		return 0;
+		}
 	}
 
 }
